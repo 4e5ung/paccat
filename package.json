@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "node": "npx hardhat node --port 8559 --hostname 192.168.0.227",
+    "test": "hardhat test"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-verify": "^2.0.3",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/hardhat-upgrades": "^1.28.0",
+    "@remix-project/remixd": "^0.6.17",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.1",
+    "hardhat": "^2.19.4",
+    "hardhat-abi-exporter": "^2.10.1",
+    "hardhat-contract-sizer": "^2.10.0",
+    "hardhat-gas-reporter": "^1.0.9",
+    "operator-filter-registry": "^1.4.2",
+    "solidity-coverage": "^0.8.4",
+    "solidity-docgen": "^0.6.0-beta.35"
+  },
+  "type": "module"
+}
