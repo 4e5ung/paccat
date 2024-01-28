@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
-contract PACCAT is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
+contract PacCat is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
     using ECDSA for bytes32;
     
     address private signVerifier;
@@ -16,7 +16,7 @@ contract PACCAT is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
     mapping(address => mapping(uint256 => bool)) public claimedToken;
 
     constructor(address _initialOwner, address _signVerifier, uint256 _chainId)
-        ERC20("PACCAT", "PCT")
+        ERC20("PacCat", "$PCAT")
         Ownable(_initialOwner)
     {
         signVerifier = _signVerifier;

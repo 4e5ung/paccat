@@ -3,7 +3,7 @@ import { keccak256 } from "ethereumjs-util"
 import pkg from 'hardhat';
 const { ethers } = pkg;
 
-describe("PACCAT 테스트", function () {
+describe("PacCat 테스트", function () {
 
     const MaxUint256 = '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
 
@@ -22,7 +22,7 @@ describe("PACCAT 테스트", function () {
     describe("민팅 테스트", function () {
 
         beforeEach(async function () {            
-            PACCATContract = await (await ethers.getContractFactory("PACCAT")).deploy(
+            PACCATContract = await (await ethers.getContractFactory("PacCat")).deploy(
                 accounts[0].address,
                 accounts[0].address, 
                 chainId,
