@@ -1,7 +1,7 @@
 async function main() {
     const accounts = await ethers.getSigners();  
 
-    const PACCATContract = await (await ethers.getContractFactory("PACCAT")).deploy(
+    const PACCATContract = await (await ethers.getContractFactory("PacCat")).deploy(
       accounts[0].address,
       accounts[0].address,
       168587773

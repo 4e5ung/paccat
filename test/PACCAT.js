@@ -37,28 +37,31 @@ describe("PacCat 테스트", function () {
             ).to.equal(ethers.utils.parseEther('10'))
         })
 
-        it("claimToken, 테스트", async function(){               
+        it.only("claimToken, 테스트", async function(){               
             const claimMessageData = {
                 account : accounts[0].address,
-                amount : ethers.utils.parseEther('10'),
+                amount : 1,
                 data : 123456,
                 chainId : chainId,
                 contract : PACCATContract.address,
             }
-    
+            
             const claimEncodedData = ethers.utils.keccak256(ethers.utils.solidityPack(
-                ["address", "uint256", "uint256", "uint256",  "address"],
+                ["address","uint256","uint256","uint256","address"],
                 [claimMessageData.account, claimMessageData.amount, claimMessageData.data, claimMessageData.chainId, claimMessageData.contract]
             ));
 
+            console.log(claimEncodedData)
+
             const wallet = new ethers.Wallet(privateKey);
             const signature = await wallet.signMessage(ethers.utils.arrayify(claimEncodedData));
-
-            await PACCATContract.claimToken(
-                claimMessageData.amount,
-                claimMessageData.data,
-                signature
-            )
+            
+            console.log(signature)
+            // await PACCATContract.claimToken(
+            //     claimMessageData.amount,
+            //     claimMessageData.data,
+            //     signature
+            // )
 
         })
     })

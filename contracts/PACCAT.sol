@@ -15,6 +15,8 @@ contract PacCat is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
 
     mapping(address => mapping(uint256 => bool)) public claimedToken;
 
+    event ClaimedToken(address indexed to, uint256 amount, uint256 data);
+
     constructor(address _initialOwner, address _signVerifier, uint256 _chainId)
         ERC20("PacCat", "$PCAT")
         Ownable(_initialOwner)
@@ -23,8 +25,10 @@ contract PacCat is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
         chainId = _chainId;
     }
 
-    function claimTest(address to, uint256 amount) public nonReentrant {
-        _mint(to, amount);
+    function airdropToken( address[] calldata walletAddress, uint256[] calldata amount ) external onlyOwner(){
+        for (uint256 i = 0; i < walletAddress.length; i++) {
+            _mint(walletAddress[i], amount[i]);
+        }
     }
 
     function claimToken(
@@ -40,6 +44,8 @@ contract PacCat is ERC20, ERC20Burnable, Ownable, ReentrancyGuard {
         require(recoverSigner(message, _sig) == signVerifier, "PACCAT: invalid signature");
 
         _mint(msg.sender, _amount);
+
+        emit ClaimedToken(msg.sender, _amount, _data);
     }
 
      // @dev Sets a new signature verifier
